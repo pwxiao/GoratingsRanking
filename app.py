@@ -21,10 +21,10 @@ def work():
             name = tds[1].text.strip()
             # gender = tds[2].span.text.strip()
             nationality = str(tds[3].img['alt'])
-            try:
-                  nationality = matchNation[str(tds[3].img['alt'])]
-            except:
-                  nationality = tds[3].img['alt']
+            # try:
+            #       nationality = matchNation[str(tds[3].img['alt'])]
+            # except:
+            nationality = tds[3].img['alt']
             level = tds[4].text.strip()
             s = {}
             s['rank'] = rank

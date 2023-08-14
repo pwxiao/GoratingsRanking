@@ -10,27 +10,34 @@
 
   <div class="mdui-container">
     <div class="mdui-panel" mdui-panel>
-   
+      <div class="mdui-typo-title"><center>围棋选手排名</center></div>
       <div class="mdui-panel-item mdui-panel-item-open">
         <div class="mdui-panel-item-header">
-          <div class="mdui-panel-item-title">排名</div>
+          <div class="mdui-panel-item-summary">排名</div>
           <div class="mdui-panel-item-summary">姓名</div>
           <div class="mdui-panel-item-summary">国籍</div>
           <div class="mdui-panel-item-summary">ELO等级分</div>
           <!-- <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i> -->
         </div>
-        <div class="mdui-panel-item-body">
+        <div class="mdui-panel-item-body mdui-typo">
  {% for data in datas %}
                 <div class="mdui-panel-item-header">
-                    <div class="mdui-panel-item-summary">{{data.rank}}</div>
-                    <div class="mdui-panel-item-summary">{{data.name}}</div>
-                    <div class="mdui-panel-item-summary">{{data.nationality}}</div>
+                    <div class="mdui-panel-item-summary"><kbd>{{data.rank}}</kbd></div>
+                    <div class="mdui-panel-item-summary"><strong>{{data.name}}</strong></div>
+                    <img src="../static/{{data.nationality}}.svg" class="mdui-panel-item-summary" width="23" height="23" class="my-image" />
                     <div class="mdui-panel-item-summary">{{data.level}}</div>
                   </div>
   {% endfor %}
 
         </div>
       </div>
+    </div>
+    <div class="mdui-typo">
+      <blockquote>
+        <p>绝艺如君天下少，闲人似我世间无。
+          别后竹窗风雪夜，一灯明暗覆吴图。</p>
+        <footer> ——杜牧</footer>
+      </blockquote>
     </div>
   </div>
 
