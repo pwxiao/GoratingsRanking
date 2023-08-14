@@ -19,7 +19,7 @@ def work():
         if len(tds) == 5:
             rank = tds[0].text.strip()
             name = tds[1].text.strip()
-            gender = tds[2].span.text.strip()
+            # gender = tds[2].span.text.strip()
             nationality = str(tds[3].img['alt'])
             try:
                   nationality = matchNation[str(tds[3].img['alt'])]
