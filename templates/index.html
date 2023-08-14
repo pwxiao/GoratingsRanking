@@ -12,19 +12,24 @@
     <div class="mdui-panel" mdui-panel>
       <div class="mdui-typo-title"><center>围棋选手排名</center></div>
       <div class="mdui-panel-item mdui-panel-item-open">
-        <div class="mdui-panel-item-header">
+       
+     <style>
+      
+     </style>
+       
+        <div class="mdui-panel-item-body mdui-typo">
+           <div class="mdui-panel-item-header">
           <div class="mdui-panel-item-summary">排名</div>
           <div class="mdui-panel-item-summary">姓名</div>
           <div class="mdui-panel-item-summary">国籍</div>
           <div class="mdui-panel-item-summary">ELO等级分</div>
           <!-- <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i> -->
         </div>
-        <div class="mdui-panel-item-body mdui-typo">
  {% for data in datas %}
                 <div class="mdui-panel-item-header">
                     <div class="mdui-panel-item-summary"><kbd>{{data.rank}}</kbd></div>
                     <div class="mdui-panel-item-summary"><strong>{{data.name}}</strong></div>
-                    <img src="../static/{{data.nationality}}.svg" class="mdui-panel-item-summary" width="23" height="23" class="my-image" />
+                    <img src="../static/{{data.nationality}}.svg" class="mdui-panel-item-summary" width="23" height="23" />
                     <div class="mdui-panel-item-summary">{{data.level}}</div>
                   </div>
   {% endfor %}
