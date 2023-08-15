@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <meta name="Description" content="围棋选手排名" />
+  <meta name="Description" content="围棋棋手排名" />
   <meta name="Keywords" content="围棋,排名,围棋选手,柯洁,申真谞,李轩豪" />
   <title>棋手排名</title>
   <link rel="stylesheet" href="../static/css/mdui.min.css"/>
@@ -19,14 +19,14 @@
       
      </style>
        
-        <div class="mdui-panel-item-body mdui-typo ">
+        <!-- <div class="mdui-panel-item-body mdui-typo ">
            <div class="mdui-panel-item-header mdui-valign">
           <div class="mdui-panel-item-summary">排名</div>
           <div class="mdui-panel-item-summary">姓名</div>
           <div class="mdui-panel-item-summary">性别</div>
           <div class="mdui-panel-item-summary">等级分</div>
           <div class="mdui-panel-item-summary">国籍</div>
-          <!-- <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i> -->
+          <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
         </div>
  {% for data in datas %}
                 <div class="mdui-panel-item-header mdui-valign">
@@ -36,11 +36,42 @@
                     <div class="mdui-panel-item-summary">{{data.level}}</div>
                     <img src="../static/{{data.nationality}}.svg" class="mdui-panel-item-summary" width="23" height="23" />
                   </div>
-  {% endfor %}
+  {% endfor %} -->
+
+
+  <div class="mdui-table-fluid">
+    <table class="mdui-table">
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>等级分</th>
+          <th>国籍</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in datas %}
+        <tr>
+          <td>{{data.rank}}</td>
+          <td><a href="{{data.link}}"><strong>{{data.name}}</strong></a></td>
+          <td style="{{data.genderColor}}">{{data.gender}}</td>
+          <td>{{data.level}}</td>
+          <td> <img src="../static/{{data.nationality}}.svg" width="23" height="23" /></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+
+
 
         </div>
       </div>
     </div>
+      <div class="mdui-container">
     <div class="mdui-typo">
       <blockquote>
         <p>绝艺如君天下少，闲人似我世间无。
@@ -48,6 +79,7 @@
         <footer> ——杜牧</footer>
       </blockquote>
     </div>
+  </div>
   </div>
 
   <script src="../static/js/mdui.min.js"></script>
