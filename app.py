@@ -20,6 +20,7 @@ def work():
         if len(tds) == 5:
             rank = tds[0].text.strip()
             name = tds[1].text.strip()
+            link = tds[1].a['href'].replace('..','https://www.goratings.org/')
             gender = tds[2].span.text.strip()
             nationality = str(tds[3].img['alt'])
             # try:
@@ -32,6 +33,7 @@ def work():
             s['genderColor'] = genderColor[gender]
             s['rank'] = rank
             s['name'] = name
+            s['link'] = link
             s['nationality'] = nationality
             s['level'] = level
             csv_data.append(s)

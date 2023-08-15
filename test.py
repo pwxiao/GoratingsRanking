@@ -14,6 +14,7 @@ for tr in data.find_all("tr"):
     if len(tds) == 5:
         rank = tds[0].text.strip()
         name = tds[1].text.strip()
+        link = tds[1].a['href']
             # gender = tds[2].span.text.strip()
         nationality = str(tds[3].img['alt'])
             # try:
@@ -22,6 +23,7 @@ for tr in data.find_all("tr"):
         nationality = tds[3].img['alt']
         level = tds[4].text.strip()
         s = {}
+        s['link'] = link
         s['rank'] = rank
         s['name'] = name
         s['nationality'] = nationality

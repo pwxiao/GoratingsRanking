@@ -19,8 +19,8 @@
       
      </style>
        
-        <div class="mdui-panel-item-body mdui-typo">
-           <div class="mdui-panel-item-header">
+        <div class="mdui-panel-item-body mdui-typo ">
+           <div class="mdui-panel-item-header mdui-valign">
           <div class="mdui-panel-item-summary">排名</div>
           <div class="mdui-panel-item-summary">姓名</div>
           <div class="mdui-panel-item-summary">性别</div>
@@ -29,9 +29,9 @@
           <!-- <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i> -->
         </div>
  {% for data in datas %}
-                <div class="mdui-panel-item-header">
+                <div class="mdui-panel-item-header mdui-valign">
                     <div class="mdui-panel-item-summary"><kbd>{{data.rank}}</kbd></div>
-                    <div class="mdui-panel-item-summary"><strong>{{data.name}}</strong></div>
+                    <div class="mdui-panel-item-summary"><a href="{{data.link}}"><strong>{{data.name}}</strong></a></div>
                     <div class="mdui-panel-item-summary" style="{{data.genderColor}}">{{data.gender}}</div>
                     <div class="mdui-panel-item-summary">{{data.level}}</div>
                     <img src="../static/{{data.nationality}}.svg" class="mdui-panel-item-summary" width="23" height="23" />
