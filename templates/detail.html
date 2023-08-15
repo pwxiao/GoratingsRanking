@@ -4,13 +4,37 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>表格 - 基础表格</title>
+    <title>对局详情</title>
     <link rel="stylesheet" href="../static/css/mdui.min.css" />
 </head>
 
 <body>
 
     <div class="mdui-container">
+        <div class="mdui-card">
+            <div class="mdui-card-media">
+           
+                </div>
+              </div>
+            </div>
+            <ul class="mdui-list">
+
+                <li class="mdui-list-item mdui-ripple">
+                  <div class="mdui-list-item-content"><center>胜</center></div>
+                  <div class="mdui-list-item-content"><center>{{total.1}}</center></div>
+                </li>
+                <li class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-content"><center>负</center></div>
+                    <div class="mdui-list-item-content"><center>{{total.2}}</center></div>
+                  </li>
+                  <li class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-content"><center>总计</center></div>
+                    <div class="mdui-list-item-content"><center>{{total.3}}</center></div>
+                  </li>
+
+              </ul>
+          </div>
+
         <div class="mdui-table-fluid">
             <table class="mdui-table">
                 <thead>
