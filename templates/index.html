@@ -37,7 +37,9 @@
         {% for data in datas %}
         <tr>
           <td>{{data.rank}}</td>
-          <td><a href="{{data.link}}"><strong>{{data.name}}</strong></a></td>
+
+          <td><a href="/showDetail?link={{data.link}}"><strong>{{data.name}}</strong></a></td>
+     
           <td style="{{data.genderColor}}">{{data.gender}}</td>
           <td>{{data.level}}</td>
           <td> <img src="../static/{{data.nationality}}.svg" width="23" height="23" /></td>

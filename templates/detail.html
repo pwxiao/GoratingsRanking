@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>表格 - 基础表格</title>
+    <link rel="stylesheet" href="../static/css/mdui.min.css" />
+</head>
+
+<body>
+
+    <div class="mdui-container">
+        <div class="mdui-table-fluid">
+            <table class="mdui-table">
+                <thead>
+                    <tr>
+                        <td>日期</td>
+                        <td>等级分</td>
+                        <td>黑白</td>
+                        <td>结果</td>
+                        <td>对手</td>
+                        <td>对手等级分</td>
+                        <td>对手性别</td>
+                        <td>对手国籍</td>
+                        <td>打谱</td>
+                        <!-- <td class="c"><span>性别</span></td> -->
+                        <!-- <td>国籍</td> -->
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    {% for link in lists %}
+
+                    <tr>
+                        <td>{{link.Date}}</td>
+                        <td>{{link.Rating}}</td>
+                        <td>{{link.Color}}</td>
+                        <td>{{link.Result}}</td>
+                        <td>{{link.PlayName}}</td>
+                        <td>{{link.PlayerRating}}</td>
+                        <td style="{{link.PlayGenderColor}}">{{link.PlayGender}}</td>
+                        <td><img src="../static/{{link.PlayNation}}.svg" width="23" height="23" /></td>
+                        <td><a href="{{link.GameLink}}">打谱</a></td>
+                        <!-- <td class="c"><span style="color:#0295FF">♂</span></td>
+                        <td class="c"><img src="/flags/cn.svg" style="height:1em;vertical-align:middle" alt="cn" /></td> -->
+                    </tr>
+
+
+                    {% endfor %}
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../static/js/mdui.min.js"></script>
+</body>
+
+</html>

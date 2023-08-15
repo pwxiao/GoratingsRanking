@@ -40,10 +40,63 @@ def work():
     return csv_data
 
 
+
+def processDetail(url):
+    response = requests.get(url)
+    response.encoding = 'utf-8'
+    html_content = response.text
+
+
+    soup = BeautifulSoup(html_content, 'html.parser')
+    genderColor = {'♂':"color:#0295FF",'♀':'color:#FE0097'}
+
+
+    table_rows = soup.find_all('tr')
+
+    list=[]
+    for row in table_rows:
+        dict={}
+        columns = row.find_all('td')
+        if len(columns) >= 9:
+            date = columns[0].text.strip()
+            rating = columns[1].text.strip()
+            color = columns[2].text.strip()
+            result = columns[3].text.strip()
+            player_name = columns[4].find('a').text.strip()
+            player_rating = columns[5].text.strip()
+            player_gender = columns[6].span.text.strip()
+            player_nationality = columns[7].img['alt']
+            game_link = columns[8].find('a')['href']
+            dict['Date'] = date
+            dict['Rating'] = rating 
+            dict['Color'] = color
+            dict['Result'] = result
+            dict['PlayName'] = player_name
+            dict['PlayerRating'] = player_rating
+            dict['PlayGender'] = player_gender
+            dict['PlayGenderColor'] = genderColor[player_gender]
+            dict['PlayNation'] = player_nationality
+            dict['GameLink'] = game_link
+        list.append(dict)
+    list = [d for d in list if d]
+    return list
+
+
+@app.route('/showDetail')
+def showDetail():
+
+    link = request.args.get('link')
+    list = processDetail(link)
+    print(list)
+    return render_template('detail.html',lists=list)
+    # return list
+
+
 @app.route('/')
 def main():
     data = work()
     return render_template("index.html",datas = data)
+
 if __name__ == '__main__':
    
     app.run(debug=True)
