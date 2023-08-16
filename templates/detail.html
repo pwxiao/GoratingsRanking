@@ -17,6 +17,9 @@
     <h2>
       <center>{{author}}</center>
     </h2>
+    <center>
+      <img class="mdui-img-circle" src="http://www.go4go.net/go/sites/default/files/player_photos/{{code}}.jpg" />
+    </center>
     <h3>
       <center>等级分曲线</center>
     </h3>
@@ -146,27 +149,27 @@
     var format2 = d3.time.format("%Y/%m/%d");
     var jsonStr = '{{ score|tojson }}';
     var data = JSON.parse(jsonStr);
-     nv.addGraph(function () {
-        var chart = nv.models.lineChart()
-          .x(function (d) { return format.parse(d[0]) })
-          .y(function (d) { return d[1] })
-          .margin({ top: 20, left: 50, right: 50 })
-          .useInteractiveGuideline(true)
-          .showYAxis(true)
-          .showXAxis(true)
-          .showLegend(false)
-          ;
+    nv.addGraph(function () {
+      var chart = nv.models.lineChart()
+        .x(function (d) { return format.parse(d[0]) })
+        .y(function (d) { return d[1] })
+        .margin({ top: 20, left: 50, right: 50 })
+        .useInteractiveGuideline(true)
+        .showYAxis(true)
+        .showXAxis(true)
+        .showLegend(false)
+        ;
 
-        chart.xAxis
-          .tickFormat(function (d) {
-            return format(new Date(d))
-          });
-        d3.select('#chartContainer svg')
-          .datum(data)
-          .call(chart);
-        nv.utils.windowResize(function () { chart.update() });
-        return chart;
-      });
+      chart.xAxis
+        .tickFormat(function (d) {
+          return format(new Date(d))
+        });
+      d3.select('#chartContainer svg')
+        .datum(data)
+        .call(chart);
+      nv.utils.windowResize(function () { chart.update() });
+      return chart;
+    });
   </script>
 
 
