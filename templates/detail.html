@@ -11,30 +11,73 @@
 <body>
 
     <div class="mdui-container">
+
         <div class="mdui-card">
             <div class="mdui-card-media">
-           
-                </div>
-              </div>
+
             </div>
-            <ul class="mdui-list">
+        </div>
 
-                <li class="mdui-list-item mdui-ripple">
-                  <div class="mdui-list-item-content"><center>胜</center></div>
-                  <div class="mdui-list-item-content"><center>{{total.1}}</center></div>
-                </li>
-                <li class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-content"><center>负</center></div>
-                    <div class="mdui-list-item-content"><center>{{total.2}}</center></div>
-                  </li>
-                  <li class="mdui-list-item mdui-ripple">
-                    <div class="mdui-list-item-content"><center>总计</center></div>
-                    <div class="mdui-list-item-content"><center>{{total.3}}</center></div>
-                  </li>
 
-              </ul>
-          </div>
 
+        <ul class="mdui-list" style="max-width: 360px;">
+            <li class="mdui-subheader-inset">对局信息</li>
+            <li class="mdui-list-item">
+              <i class="mdui-list-item-avatar mdui-icon material-icons">comment</i>
+              <div class="mdui-list-item-content">
+                <div class="mdui-list-item-title">胜</div>
+              </div>
+             <div class="mdui-list-item-text">{{total.0}}</div>
+            </li>
+            <li class="mdui-list-item">
+              <i class="mdui-list-item-avatar mdui-icon material-icons">comment</i>
+              <div class="mdui-list-item-content">
+                <div class="mdui-list-item-title">负</div>
+              </div>
+              <div class="mdui-list-item-text">{{total.1}}</div>
+            </li>
+          
+            <li class="mdui-list-item">
+                <i class="mdui-list-item-avatar mdui-icon material-icons">comment</i>
+                <div class="mdui-list-item-content">
+                  <div class="mdui-list-item-title">总对局</div>
+                </div>
+                <div class="mdui-list-item-text">{{total.2}}</div>
+              </li>
+
+            <li class="mdui-subheader-inset">详细</li>
+            <li class="mdui-list-item">
+            <i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue mdui-text-color-white">assignment</i>
+              <div class="mdui-list-item-content">
+                <div class="mdui-list-item-title">链接</div>
+                
+              </div>
+              <a href="{{total.3}}">
+              <i class="mdui-icon material-icons">insert_link</i>
+            </a>
+            </li>
+            <li class="mdui-list-item">
+              <i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-yellow-600 mdui-text-color-white">accessibility</i>
+              <div class="mdui-list-item-content">
+                <div class="mdui-list-item-title">生日</div>
+                
+              </div>
+              <div class="mdui-list-item-text">{{total[-1]}}</div>
+            </li>
+          </ul>
+
+
+
+
+
+
+    </div>
+
+
+    <div class="mdui-divider-inset"></div>  
+ <!-- 分割线 -->
+
+    <div class="mdui-container">
         <div class="mdui-table-fluid">
             <table class="mdui-table">
                 <thead>
@@ -53,7 +96,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                 
+
                     {% for link in lists %}
 
                     <tr>
@@ -78,6 +121,8 @@
                 </tbody>
             </table>
         </div>
+
+    </div>
     </div>
 
     <script src="../static/js/mdui.min.js"></script>

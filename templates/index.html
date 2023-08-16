@@ -1,62 +1,66 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <meta name="Description" content="围棋棋手排名" />
   <meta name="Keywords" content="围棋,排名,围棋选手,柯洁,申真谞,李轩豪" />
   <title>棋手排名</title>
-  <link rel="stylesheet" href="../static/css/mdui.min.css"/>
+  <link rel="stylesheet" href="../static/css/mdui.min.css" />
 </head>
+
 <body>
 
   <div class="mdui-container">
     <div class="mdui-panel" mdui-panel>
-      <div class="mdui-typo-title"><center>围棋棋手排名</center></div>
+      <div class="mdui-typo-title">
+        <center>围棋棋手排名</center>
+      </div>
       <div class="mdui-panel-item mdui-panel-item-open">
-       
-     <style>
-      
-     </style>
-       
 
+        <style>
 
-
-  <div class="mdui-table-fluid">
-    <table class="mdui-table">
-      <thead>
-        <tr>
-          <th>排名</th>
-          <th>姓名</th>
-          <th>性别</th>
-          <th>等级分</th>
-          <th>国籍</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for data in datas %}
-        <tr>
-          <td>{{data.rank}}</td>
-
-          <td><a href="/showDetail?link={{data.link}}"><strong>{{data.name}}</strong></a></td>
-     
-          <td style="{{data.genderColor}}">{{data.gender}}</td>
-          <td>{{data.level}}</td>
-          <td> <img src="../static/{{data.nationality}}.svg" width="23" height="23" /></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+        </style>
 
 
 
 
+        <div class="mdui-table-fluid">
+          <table class="mdui-table">
+            <thead>
+              <tr>
+                <th>排名</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>等级分</th>
+                <th>国籍</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for data in datas %}
+              <tr>
+                <td>{{data.rank}}</td>
 
+                <td><a href="/showDetail?link={{data.link}}"><strong>{{data.name}}</strong></a></td>
+
+                <td style="{{data.genderColor}}">{{data.gender}}</td>
+                <td>{{data.level}}</td>
+                <td> <img src="../static/{{data.nationality}}.svg" width="23" height="23" /></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
+
+
+
+
+
       </div>
     </div>
-      <div class="mdui-container">
+  </div>
+  <div class="mdui-container">
     <div class="mdui-typo">
       <blockquote>
         <p>绝艺如君天下少，闲人似我世间无。
@@ -69,4 +73,5 @@
 
   <script src="../static/js/mdui.min.js"></script>
 </body>
+
 </html>

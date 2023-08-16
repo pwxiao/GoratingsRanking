@@ -50,13 +50,11 @@ def processDetail(url):
     soup = BeautifulSoup(html_content, 'html.parser')
     genderColor = {'♂':"color:#0295FF",'♀':'color:#FE0097'}
     table = soup.find('table')
-    l = {}
-    i=1
+    l = []
     for row in table.find_all('tr'):
         cells = row.find_all(['th', 'td'])
         value = cells[1].text.strip()
-        l[i]=value
-        i+=1
+        l.append(value)
 
     
     table_rows = soup.find_all('tr')
@@ -94,7 +92,6 @@ def showDetail():
 
     link = request.args.get('link')
     list,total = processDetail(link)
-    print(list)
     return render_template('detail.html',lists=list,total=total)
     # return list
 
