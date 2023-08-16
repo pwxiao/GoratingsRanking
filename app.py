@@ -1,8 +1,8 @@
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,jsonify
 import os
 from bs4 import BeautifulSoup
 import requests
-
+import re
 
 app = Flask(__name__,template_folder='templates')
 
@@ -43,11 +43,18 @@ def work():
 
 def processDetail(url):
     response = requests.get(url)
+
+    result = re.search(r"/(\d+)\.html", url)
+    if result:
+        code = result.group(1)
+    else:
+        code = '1313'
+
     response.encoding = 'utf-8'
     html_content = response.text
-
-
     soup = BeautifulSoup(html_content, 'html.parser')
+    title = soup.title.string
+
     genderColor = {'♂':"color:#0295FF",'♀':'color:#FE0097'}
     table = soup.find('table')
     l = []
@@ -84,15 +91,30 @@ def processDetail(url):
             dict['GameLink'] = game_link
         list.append(dict)
     list = [d for d in list if d]
-    return list,l
+    return list,l,title,code
+
+
+def getScore(url):
+    result = re.search(r"/(\d+)\.html", url)
+    if result:
+        code = result.group(1)
+    else:
+        code = '1313'
+    content = requests.get('https://www.goratings.org/players-json/data-'+code+'.json')
+    score = content.json()
+    return (score)
+    
+
+
 
 
 @app.route('/showDetail')
 def showDetail():
 
     link = request.args.get('link')
-    list,total = processDetail(link)
-    return render_template('detail.html',lists=list,total=total)
+    list,total,title,code = processDetail(link)
+    score = getScore(link)
+    return render_template('detail.html',lists=list,total=total,author=title,code=code,score=score)
     # return list
 
 
@@ -100,6 +122,17 @@ def showDetail():
 def main():
     data = work()
     return render_template("index.html",datas = data)
+
+
+# @app.route('/getScore', methods=['POST'])
+# def getScore():
+#     code = request.form['data']
+#     response = requests.get('https://www.goratings.org/players-json/data-'+code+'.json')
+#     return jsonify(result=response.text)
+
+
+
+
 
 if __name__ == '__main__':
    

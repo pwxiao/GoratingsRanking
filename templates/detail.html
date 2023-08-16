@@ -2,130 +2,211 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>对局详情</title>
-    <link rel="stylesheet" href="../static/css/mdui.min.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{{author}}</title>
+  <link href="../static/css/nv.d3.min.css" rel="stylesheet">
+  <script src="../static/js/d3.min.js" charset="utf-8"></script>
+  <script src="../static/js/nv.d3.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="../static/css/mdui.min.css" />
 </head>
 
 <body>
 
-    <div class="mdui-container">
+  <div class="mdui-container">
+    <h2>
+      <center>{{author}}</center>
+    </h2>
+    <h3>
+      <center>等级分曲线</center>
+    </h3>
 
-        <div class="mdui-card">
-            <div class="mdui-card-media">
+    <div class="mdui-card">
 
-            </div>
+      <center>
+
+        <div id='chartContainer'>
+          <svg id='graph' style='height:450px; width:600px'> </svg>
         </div>
-
-
-
-        <ul class="mdui-list" style="max-width: 360px;">
-            <li class="mdui-subheader-inset">对局信息</li>
-            <li class="mdui-list-item">
-              <i class="mdui-list-item-avatar mdui-icon material-icons">comment</i>
-              <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">胜</div>
-              </div>
-             <div class="mdui-list-item-text">{{total.0}}</div>
-            </li>
-            <li class="mdui-list-item">
-              <i class="mdui-list-item-avatar mdui-icon material-icons">comment</i>
-              <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">负</div>
-              </div>
-              <div class="mdui-list-item-text">{{total.1}}</div>
-            </li>
-          
-            <li class="mdui-list-item">
-                <i class="mdui-list-item-avatar mdui-icon material-icons">comment</i>
-                <div class="mdui-list-item-content">
-                  <div class="mdui-list-item-title">总对局</div>
-                </div>
-                <div class="mdui-list-item-text">{{total.2}}</div>
-              </li>
-
-            <li class="mdui-subheader-inset">详细</li>
-            <li class="mdui-list-item">
-            <i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue mdui-text-color-white">assignment</i>
-              <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">链接</div>
-                
-              </div>
-              <a href="{{total.3}}">
-              <i class="mdui-icon material-icons">insert_link</i>
-            </a>
-            </li>
-            <li class="mdui-list-item">
-              <i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-yellow-600 mdui-text-color-white">accessibility</i>
-              <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">生日</div>
-                
-              </div>
-              <div class="mdui-list-item-text">{{total[-1]}}</div>
-            </li>
-          </ul>
-
-
-
-
-
+      </center>
 
     </div>
 
 
-    <div class="mdui-divider-inset"></div>  
- <!-- 分割线 -->
 
-    <div class="mdui-container">
-        <div class="mdui-table-fluid">
-            <table class="mdui-table">
-                <thead>
-                    <tr>
-                        <td>日期</td>
-                        <td>等级分</td>
-                        <td>黑白</td>
-                        <td>结果</td>
-                        <td>对手</td>
-                        <td>对手等级分</td>
-                        <td>对手性别</td>
-                        <td>对手国籍</td>
-                        <td>打谱</td>
-                        <!-- <td class="c"><span>性别</span></td> -->
-                        <!-- <td>国籍</td> -->
-                    </tr>
-                </thead>
-                <tbody>
 
-                    {% for link in lists %}
+    <ul class="mdui-list" style="max-width: device-width;">
+      <li class="mdui-subheader-inset">对局信息</li>
+      <li class="mdui-list-item">
+        <i class="mdui-list-item-avatar mdui-icon material-icons">comment</i>
+        <div class="mdui-list-item-content">
+          <div class="mdui-list-item-title">胜</div>
+        </div>
+        <div class="mdui-list-item-text">{{total.0}}</div>
+      </li>
+      <li class="mdui-list-item">
+        <i class="mdui-list-item-avatar mdui-icon material-icons">comment</i>
+        <div class="mdui-list-item-content">
+          <div class="mdui-list-item-title">负</div>
+        </div>
+        <div class="mdui-list-item-text">{{total.1}}</div>
+      </li>
 
-                    <tr>
-                        <td>{{link.Date}}</td>
-                        <td>{{link.Rating}}</td>
-                        <td>{{link.Color}}</td>
-                        <td>{{link.Result}}</td>
-                        <td>{{link.PlayName}}</td>
-                        <td>{{link.PlayerRating}}</td>
-                        <td style="{{link.PlayGenderColor}}">{{link.PlayGender}}</td>
-                        <td><img src="../static/{{link.PlayNation}}.svg" width="23" height="23" /></td>
-                        <td><a href="{{link.GameLink}}">打谱</a></td>
-                        <!-- <td class="c"><span style="color:#0295FF">♂</span></td>
+      <li class="mdui-list-item">
+        <i class="mdui-list-item-avatar mdui-icon material-icons">comment</i>
+        <div class="mdui-list-item-content">
+          <div class="mdui-list-item-title">总对局</div>
+        </div>
+        <div class="mdui-list-item-text">{{total.2}}</div>
+      </li>
+
+      <li class="mdui-subheader-inset">个人信息</li>
+      <li class="mdui-list-item">
+        <i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue mdui-text-color-white">assignment</i>
+        <div class="mdui-list-item-content">
+          <div class="mdui-list-item-title">链接</div>
+
+        </div>
+        <a href="{{total.3}}">
+          <i class="mdui-icon material-icons">insert_link</i>
+        </a>
+      </li>
+      <li class="mdui-list-item">
+        <i
+          class="mdui-list-item-avatar mdui-icon material-icons mdui-color-yellow-600 mdui-text-color-white">accessibility</i>
+        <div class="mdui-list-item-content">
+          <div class="mdui-list-item-title">生日</div>
+
+        </div>
+        <div class="mdui-list-item-text">{{total[-1]}}</div>
+      </li>
+    </ul>
+
+
+
+
+
+
+  </div>
+
+
+  <h3>
+    <center>所有对局</center>
+  </h3>
+
+  <div class="mdui-container">
+    <div class="mdui-table-fluid">
+      <table class="mdui-table">
+        <thead>
+          <tr>
+            <td>日期</td>
+            <td>等级分</td>
+            <td>黑白</td>
+            <td>结果</td>
+            <td>对手</td>
+            <td>对手等级分</td>
+            <td>对手性别</td>
+            <td>对手国籍</td>
+            <td>打谱</td>
+            <!-- <td class="c"><span>性别</span></td> -->
+            <!-- <td>国籍</td> -->
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for link in lists %}
+
+          <tr>
+            <td>{{link.Date}}</td>
+            <td>{{link.Rating}}</td>
+            <td>{{link.Color}}</td>
+            <td>{{link.Result}}</td>
+            <td>{{link.PlayName}}</td>
+            <td>{{link.PlayerRating}}</td>
+            <td style="{{link.PlayGenderColor}}">{{link.PlayGender}}</td>
+            <td><img src="../static/{{link.PlayNation}}.svg" width="23" height="23" /></td>
+            <td><a href="{{link.GameLink}}">打谱</a></td>
+            <!-- <td class="c"><span style="color:#0295FF">♂</span></td>
                         <td class="c"><img src="/flags/cn.svg" style="height:1em;vertical-align:middle" alt="cn" /></td> -->
-                    </tr>
+          </tr>
 
 
-                    {% endfor %}
+          {% endfor %}
 
 
 
-                </tbody>
-            </table>
-        </div>
-
-    </div>
+        </tbody>
+      </table>
     </div>
 
-    <script src="../static/js/mdui.min.js"></script>
+  </div>
+  </div>
+  <script type="text/javascript">
+    var format = d3.time.format("%Y-%m-%d");
+    var format2 = d3.time.format("%Y/%m/%d");
+    var jsonStr = '{{ score|tojson }}';
+    var data = JSON.parse(jsonStr);
+     nv.addGraph(function () {
+        var chart = nv.models.lineChart()
+          .x(function (d) { return format.parse(d[0]) })
+          .y(function (d) { return d[1] })
+          .margin({ top: 20, left: 50, right: 50 })
+          .useInteractiveGuideline(true)
+          .showYAxis(true)
+          .showXAxis(true)
+          .showLegend(false)
+          ;
+
+        chart.xAxis
+          .tickFormat(function (d) {
+            return format(new Date(d))
+          });
+        d3.select('#chartContainer svg')
+          .datum(data)
+          .call(chart);
+        nv.utils.windowResize(function () { chart.update() });
+        return chart;
+      });
+  </script>
+
+
+  <!-- <script>
+    $(document).ready(function () {
+
+      var data = "{{score}}";
+      $.ajax({
+        type: 'POST',
+        url: 'getScore',
+        data: { 'data': data },
+        success: function (response) {
+          nv.addGraph(function () {
+            var chart = nv.models.lineChart()
+              .x(function (d) { return format.parse(d[0]) })
+              .y(function (d) { return d[1] })
+              .margin({ top: 20, left: 50, right: 50 })
+              .useInteractiveGuideline(true)
+              .showYAxis(true)
+              .showXAxis(true)
+              .showLegend(false)
+              ;
+
+            chart.xAxis
+              .tickFormat(function (d) {
+                return format(new Date(d))
+              });
+            d3.select('#chartContainer svg')
+              .datum(response.result)
+              .call(chart);
+            nv.utils.windowResize(function () { chart.update() });
+            return chart;
+          });
+        }
+
+      });
+    }
+    );
+  </script> -->
+  <script src="../static/js/mdui.min.js"></script>
 </body>
 
 </html>
