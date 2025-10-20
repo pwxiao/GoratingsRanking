@@ -34,7 +34,7 @@ def work():
             s['rank'] = rank
             s['name'] = name
             s['link'] = link
-            s['nationality'] = nationality
+            s['nationality'] = nationality.split(" ")[0]
             s['level'] = level
             csv_data.append(s)
     return csv_data
