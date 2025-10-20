@@ -56,7 +56,7 @@
 
                 <td style="{{data.genderColor}}">{{data.gender}}</td>
                 <td>{{data.level}}</td>
-                <td> <img src="../static/{{data.nationality}}.svg" width="23" height="23" /></td>
+                <td> <img src="../static/{{ data.nationality|default('')|split(' ')|first }}.svg" width="23" height="23" /></td>
               </tr>
               {% endfor %}
             </tbody>
